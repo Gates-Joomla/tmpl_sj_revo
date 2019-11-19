@@ -1,0 +1,206 @@
+/*******************************************
+***          YT Framework: less          ***
+*******************************************/
+
+// --* Layouts Templates *-----------------
+// ----------------------------------------
+/*   1.Block Header
+ *   2.Block Mainmenu
+ *   3.Block Slideshow
+ *   4.Block Breadcrumb
+ *   5.Block Main Content
+ *   6.Block Spotlight
+ *   7.Block Footer
+ *   8.Non-responsive
+ */
+
+
+body{ color:#666666; background: #fff;  font-size: 13px; font-weight: 300; line-height: 24px;}
+h1,h2,h3 {font-weight: 700;}
+
+.btn {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+}
+#yt_wrapper{
+    position: relative;
+}
+//
+#yt_header_top{
+    background: #f2f2f2;
+    position: relative;
+    #content_top2{
+        .module{
+            display: inline-block;
+            float: right;
+            padding: 0 10px;
+            position: relative;
+            line-height: normal;
+            &:first-child{
+                padding-right: 0;
+                &:after{display: none;}
+            }
+            &.mod-login{
+                padding-left: 0;
+            }
+            &:after{
+                content: "";
+                height: 16px;
+                width: 1px;
+                background: #ddd;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                .lib-tranlate-y();
+            }
+        }
+    }
+    .module{
+        margin-bottom: 0;
+        
+        .list_social{
+            margin: 0 -10px;
+            padding: 0;
+            list-style: none;
+            text-align: right;
+            height: 46px;
+            line-height: 46px;
+            >li{
+                display: inline-block;
+                padding: 0 5px;
+                .yt-icon{
+                    margin: 0;
+                    i{
+                        color: #bbb;
+                        font-size: 14px;
+                        line-height: 15px;
+                        padding: 2px;
+                        
+                        &:hover{
+                            background: #444;
+                            color: #f7f7f7;
+                        }
+                    }
+                }
+            }
+        }
+       
+    }
+    
+}
+#yt_header_center{
+    background: @background1;
+    #yt_logo{
+        .logo{
+            padding: 33px 0;
+            display: inline-block;
+        }
+    }
+    &.menu-fixed{
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        left: 0;
+        #yt_logo{
+            display: none;
+        }
+    }
+}
+#yt_header_bottom{
+    position: relative;
+    z-index: 99;
+    box-shadow: 0 2px 2px #ccc;
+    background: darken(@background1, 10%);
+}
+@media (max-width: 991px){
+    #yt_header_bottom{
+        background: darken(@background1, 20%);
+    }
+    .home-layout2 .module.vertical-menu h3.modtitle{
+        background: #fff !important;
+        color: #444 !important;
+    }
+}
+.home-layout1{
+    #yt_spotlight1{
+        background: #fff;
+        position: relative;
+        z-index: 5;
+        padding-bottom: 10px;
+    }
+    #yt_spotlight2{
+        padding: 40px 0 0;
+        background: url(../images/bg/bg1.jpg) center top no-repeat; 
+    }
+    #yt_spotlight3{
+        background: #fff;
+    }
+    #yt_spotlight4{
+        padding: 60px 0;
+        background: url(../images/bg/bg2.jpg) center top no-repeat;
+        background-size: cover
+    }
+    #yt_spotlight5{
+        background: #111;
+        padding-top: 45px;
+        .module{
+            h3.modtitle{
+                font-size: 16px;
+                text-transform: uppercase;
+                color: #fff;
+                margin: 0 0 30px;
+            }
+            .list-link{
+                .item{
+                    margin: 0 0 10px;
+                    a{
+                        color: #7d7d7d;
+                        &:before{
+                            content: "\f105";
+                            font-family: fontawesome;
+                            display: inline-block;
+                            font-size: 16px;
+                            margin-right: 4px;
+                        }
+                        &:hover{
+                            color: @linkColor;
+                        }
+                    }
+                    &:last-child{
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+#yt_component{
+    margin: 0 0 30px;
+}
+
+//7.Block Footer
+#yt_footer {
+    background: @background1;
+    padding: 25px 0;
+    text-align: center;
+    #yt_copyright{
+        color: #fff;
+        text-align: center;
+        margin: 0 0 10px;
+        .copyright{display: inline-block;}
+        .designby{
+            display: inline-block;
+            a{color: #fff;}
+        }
+    }
+
+}
+
+//8.Non-responsive Bootstrap
+@media  (max-width: 1024px) {.no-res{width: 1190px; }}
+
