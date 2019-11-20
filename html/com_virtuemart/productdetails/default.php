@@ -81,6 +81,17 @@ if(vRequest::getInt('print',false)){ ?>
 			
 				<?php // Product Title   ?>
 				<h1><?php echo $this->product->product_name ?></h1>
+                
+                <?php
+                    # РЕЙТИНГ + ИЗБРАНОЕ + ПОДЕЛИТСЯ
+                    # Расположение слоя
+                    # /templates/sj_revo/html/layouts/product_detal/rating.php
+                    echo JLayoutHelper::render('product_detal.rating', ['product'=>$this->product]);
+                ?>
+  
+                
+                
+                    
 				<?php // Product Title END   ?>
 			
 				<?php // afterDisplayTitle Event
@@ -113,21 +124,41 @@ if(vRequest::getInt('print',false)){ ?>
 				?>
 				
 				</div>
+				<?php
+					# Расположение слоя
+					# /templates/sj_revo/html/layouts/product_detal/file_media.php
+					echo JLayoutHelper::render('product_detal.product_squ', ['product'=>$this->product]); ?>
+     
 				<div class="vm-product-details-container">
 				<?php
                     
      
                     
-					echo shopFunctionsF::renderVmSubLayout('rating',array('showRating'=>$this->showRating,'product'=>$this->product));
-					echo shopFunctionsF::renderVmSubLayout('prices',array('product'=>$this->product,'currency'=>$this->currency));
-					echo shopFunctionsF::renderVmSubLayout('stockhandle',array('product'=>$this->product));
+//					echo shopFunctionsF::renderVmSubLayout('rating',array('showRating'=>$this->showRating,'product'=>$this->product));
+					// @todo
+					// echo '<br/>'; ?>
+                    
+                    <div style="">
+                        <span class="kol55">Доступность: </span> В наличии
+                    </div>
 					
-					
-					
-					
-					
-					
-					?>
+                    <?php
+	
+	
+	                    echo shopFunctionsF::renderVmSubLayout( 'prices' , [ 'product' => $this->product , 'currency' => $this->currency ] );
+	                    // echo shopFunctionsF::renderVmSubLayout('stockhandle',array('product'=>$this->product));
+	
+                     
+                     
+	                    
+	                    ?>
+                    <div class="del-sep"></div>
+                    
+                    <?php
+                    
+
+
+                    ?>
 				   
 					<?php
 				// Product Short Description
@@ -152,9 +183,10 @@ if(vRequest::getInt('print',false)){ ?>
 					  echo '<span class="bold">'. vmText::_('COM_VIRTUEMART_PRODUCT_DETAILS_VENDOR_LBL'). '</span>'; ?><a class="modal" href="<?php echo $link ?>"><?php echo $text ?></a><br />
 					 */
 					?>
-					<?php if (is_array($this->productDisplayShipments)) {
+					<?php
+                     if (is_array($this->productDisplayShipments)) {
 						foreach ($this->productDisplayShipments as $productDisplayShipment) {
-						echo $productDisplayShipment . '';
+						    echo $productDisplayShipment . '';
 						}
 					}
 					if (is_array($this->productDisplayPayments)) {
@@ -171,15 +203,23 @@ if(vRequest::getInt('print',false)){ ?>
 					echo shopFunctionsF::renderVmSubLayout('addtocart',array('product'=>$this->product));
 			
 			
-					// Ask a question about this product
-					if (VmConfig::get('ask_question', 0) == 1) {
-						$askquestion_url = JRoute::_('index.php?option=com_virtuemart&view=productdetails&task=askquestion&virtuemart_product_id=' . $this->product->virtuemart_product_id . '&virtuemart_category_id=' . $this->product->virtuemart_category_id . '&tmpl=component', FALSE);
-						?>
-						<div class="form-group">
-							<a class="ask-a-question button" onclick="askQuestionEvent(event , this)" href="<?php echo $askquestion_url ?>" rel="nofollow" ><?php echo vmText::_('COM_VIRTUEMART_PRODUCT_ENQUIRY_LBL') ?></a>
-						</div>
-					<?php
-					}
+					 
+	                    // Ask a question about this product
+	                    if( VmConfig::get( 'ask_question' , 0 ) == 1 )
+	                    {
+		                    $askquestion_url = JRoute::_( 'index.php?option=com_virtuemart&view=productdetails&task=askquestion&virtuemart_product_id=' . $this->product->virtuemart_product_id . '&virtuemart_category_id=' . $this->product->virtuemart_category_id . '&tmpl=component' , false );
+		                    ?>
+                        <div class="form-group question">
+                            <a class="ask-a-question button" onclick="askQuestionEvent(event , this)"
+                               href="<?php echo $askquestion_url ?>"
+                               rel="nofollow">
+								<?php echo vmText::_( 'COM_VIRTUEMART_PRODUCT_ENQUIRY_LBL' ) ?>
+                                <span class="jcemediabox-zoom-link"></span>
+                            </a>
+                        </div>
+						<?php
+						}
+						
 							
 							
 							
@@ -195,12 +235,17 @@ if(vRequest::getInt('print',false)){ ?>
 						<div class="form-group">
 							<?php echo $this->loadTemplate('manufacturer');?>
 						</div>
-					<?php } ?>
+					<?php
+					} ?>
 			
 					</div>
+                    
+     
+                    
+                    
 					<!-- Item Social Button -->
 					<div class="itemSocialBlock">
-						<strong><?php echo JText::_('TEXT_SHARE'); ?></strong> 
+						<strong><?php echo JText::_('Соц.Сети'); ?></strong>
 						 <div class="post_social">
 							<a href="javascript:void(0)" class="icon-fb" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=<?php echo JURI::current();?>&amp;url=<?php echo JURI::current();?>')" title="Facebook Share"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 							<a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=<?php echo JURI::current();?>')" class="icon-gplus" title="Google Plus Share"><i class="fa fa-google-plus" aria-hidden="true"></i></a>

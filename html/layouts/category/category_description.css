@@ -1,15 +1,18 @@
 .category-view .category_description {
     margin: 0 0 40px;
+    width: 100%;
 }
 .bottom-text {
     font-size: 13px;
     line-height: 19px;
     color: #999;
+    float: left;
 }
 .bottom-text_state_collapsed {
     position: relative;
     max-height: 150px;
     overflow: hidden;
+	margin-top: 25px;
 }
 .bottom-text_state_collapsed::after {
     position: absolute;
@@ -30,7 +33,7 @@
     border: none;
     background: 0 0;
     text-decoration: none;
-    color: #3e77aa;
+    color: #000000;
     cursor: pointer;
 }
 .bottom-text__toggler {

@@ -1,0 +1,56 @@
+.b1v7 {
+    margin-right: 8px
+}
+.b1b0 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.b0a4.b0c3>* {
+    margin-right: 12px;
+}
+
+.reviews {}
+
+.rating {
+    margin: 0 0 12px;
+}
+.b1v6 {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+.stars[data-v-af4ef1ce] {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMinYMid' viewBox='0 0 15 15'%3E%3Cpath class='st0' fill='%23d6dbe0' d='M7.5 0l2.3 4.9 5.2.8-3.7 3.8.9 5.4-4.6-2.6L2.9 15l.9-5.4L0 5.7l5.2-.8L7.5 0z'/%3E%3C/svg%3E") repeat-x 0;
+    background-size: 17px 16px;
+    height: 15px;
+    width: 83px
+}
+.fill[data-v-af4ef1ce] {
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMinYMid' viewBox='0 0 15 15'%3E%3Cpath class='st0' fill='%23ff8970' d='M7.5 0l2.3 4.9 5.2.8-3.7 3.8.9 5.4-4.6-2.6L2.9 15l.9-5.4L0 5.7l5.2-.8L7.5 0z'/%3E%3C/svg%3E") repeat-x 0;
+    background-size: 17px 16px;
+    height: 15px;
+    width: 0
+}
+.stars.product-rating-simple[data-v-af4ef1ce] {
+    background-size: 18px 15px;
+    height: 16px;
+    width: 88px;
+}
+.fill.product-rating-simple[data-v-af4ef1ce] {
+    background-size: 18px 15px;
+    height: 16px;
+    width: 0;
+}
+.b1v8 {
+    font-size: 14px;
+    line-height: 1.29;
+    color: #005bff;
+}

@@ -4365,6 +4365,7 @@ div.module {
 .wrap_breadcrumbs {
   text-align: left;
   padding: 40px 0;
+  padding-bottom: 7px;
 }
 .wrap_breadcrumbs ul.breadcrumb {
   display: inline-block;
@@ -6309,6 +6310,7 @@ div.news-scroller .scroller-container.nav-style2 .iviewSlider .iview-caption .ns
   border: 1px solid #eaeaea;
   box-shadow: 0 2px 2px #ccc;
   padding: 20px 10px;
+  z-index: 999999;
 }
 .module.mini-cart .sj-minicart-pro .mc-wrap .mc-content .mc-empty {
   color: #9dc02e;
@@ -9057,9 +9059,7 @@ table.user-details {
   white-space: nowrap;
   padding: 6px 10px;
 }
-.category-view .category_description {
-  margin: 0 0 40px;
-}
+ 
 .category-view .virtuemart_search {
   background: #f2f2f2;
   padding: 20px;
@@ -9111,6 +9111,7 @@ table.user-details {
 }
 .category-view .orderby-displaynumber.bottom {
   margin: 0;
+  display: none;
 }
 .category-view .orderby-displaynumber .vm-view-list {
   padding: 0;
@@ -9370,6 +9371,7 @@ table.user-details {
 }
 .category-view .row .product-container .vm-product-media-container .browseProductImage {
   max-height: none;
+  height: 273px;
 }
 .category-view .row .product-container .vm-product-media-container .sale_price {
   height: 42px;
@@ -9762,14 +9764,14 @@ table.user-details {
 .productdetails .vm-product-container .vm-product-top-container h1 {
   font-size: 18px;
   color: #222;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 .productdetails .vm-product-container .vm-product-details-container {
   float: none;
   width: auto;
 }
 .productdetails .vm-product-container .vm-product-details-container .ratingbox {
-  margin: 0 0 25px;
+  margin: 0 0 10px;
 }
 .productdetails .vm-product-container .vm-product-details-container .product-price {
   width: 100%;
@@ -9777,9 +9779,10 @@ table.user-details {
   padding: 0 0 20px;
   margin: 0 0 20px;
   border-bottom: 1px solid #e8e8e8;
+  margin-top: 7px;
 }
 .productdetails .vm-product-container .vm-product-details-container .product-price span.vm-price-desc {
-  display: none;
+  /* display: none; */
 }
 .productdetails .vm-product-container .vm-product-details-container .product-price .PricesalesPrice {
   display: inline-block;
@@ -9858,11 +9861,12 @@ table.user-details {
   background-position: -18px 10px;
 }
 .productdetails .vm-product-container .vm-product-details-container .spacer-buy-area .addtocart-bar {
-  margin: 20px 0 30px;
+  margin: 20px 0 15px;
 }
 .productdetails .vm-product-container .vm-product-details-container .spacer-buy-area .addtocart-bar .quantity-box {
   border: 1px solid #ebebeb;
   padding: 0 10px;
+  float: left;
 }
 .productdetails .vm-product-container .vm-product-details-container .spacer-buy-area .addtocart-bar .quantity-box .quantity-input {
   border: none;
@@ -9883,11 +9887,12 @@ table.user-details {
   font-size: 13px;
   font-weight: 600;
   background: #9dc02e;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   border: none;
-  text-transform: capitalize;
+  text-transform: uppercase;
   padding: 5px;
-  margin: 0 15px;
+  margin: 0 5px;
+  float: left;
 }
 .productdetails .vm-product-container .vm-product-details-container .spacer-buy-area .addtocart-bar .addtocart-button .addtocart-button {
   background: none;

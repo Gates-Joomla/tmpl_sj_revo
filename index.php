@@ -152,6 +152,13 @@ if($yt->getParam('comingsoon_mode')) header("Location: ".$this->baseUrl."?tmpl=c
                                 // BEGIN: foreach position of block content
                                 $yt->_countPosGroup($tagBD['positions']);
                                 foreach($tagBD['positions'] as $position):
+	                                
+	                                # Отключить правую позицию модуля в карточке товара
+	                                if( $position['group'] == 'right' && $view == 'productdetails'   )
+	                                {
+		                                continue ;
+		                            }#END IF
+                                    
                                     include(J_TEMPLATEDIR.J_SEPARATOR.'includes'.J_SEPARATOR.'block-content.php');
                                 endforeach;
                                 // END: foreach position of block content

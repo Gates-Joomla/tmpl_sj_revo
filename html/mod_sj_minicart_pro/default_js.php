@@ -9,8 +9,8 @@
  */
 
 defined('_JEXEC') or die;
-
-
+	$doc = JFactory::getDocument();
+	$doc->addScriptOptions('siteUrl',JUri::root());
 
 ?>
 
@@ -68,33 +68,33 @@ defined('_JEXEC') or die;
 			/*
 			 * MouseOver - MouseOut
 			 */
-			$_mc_wrap.bind('mouseenter ', function(e) {
-				var $this = $(this);
-				if ($this.hasClass('over')) {
-					return;
-				}
-				if ($minicart.data('timeout')) {
-					clearTimeout($minicart.data('timeout'));
-				}
-				var timeout = setTimeout(function () {
-					$this.addClass('over');
-					$('.mc-content', $this).stop(false, true).slideDown('slow');
-					//jscrollDisplay();
-				}, 300);
-				$minicart.data('timeout', timeout);
+            $_mc_wrap.bind('mouseenter ', function (e) {
+                var $this = $(this);
+                if ($this.hasClass('over')) {
+                    return;
+                }
+                if ($minicart.data('timeout')) {
+                    clearTimeout($minicart.data('timeout'));
+                }
+                var timeout = setTimeout(function () {
+                    $this.addClass('over');
+                    $('.mc-content', $this).stop(false, true).slideDown('slow');
+                    //jscrollDisplay();
+                }, 300);
+                $minicart.data('timeout', timeout);
 
-			}).bind('mouseleave ', function (e){
-				var $this = $(this);
-				if($minicart.data('timeout')){
-				clearTimeout($minicart.data('timeout'));
-				}
-				var timeout = setTimeout(function(){
-				$('.mc-content', $this).stop(false,true).slideUp('fast');
-					$this.removeClass('over');
+            }).bind('mouseleave ', function (e) {
+                var $this = $(this);
+                if ($minicart.data('timeout')) {
+                    clearTimeout($minicart.data('timeout'));
+                }
+                var timeout = setTimeout(function () {
+                    $('.mc-content', $this).stop(false, true).slideUp('fast');
+                    $this.removeClass('over');
 
-				},300);
-				$minicart.data('timeout',timeout);
-			});
+                }, 300);
+                $minicart.data('timeout', timeout);
+            });
 			
 			
 			$_mc_header.bind('touchstart', function (e) {
@@ -153,6 +153,40 @@ defined('_JEXEC') or die;
 									$_quantity.val(1);
 								}
 							}
+                            var $paren = $(this).closest('.mc-product')
+							var productId = $paren.data('product-id') ;
+							var val = $_quantity.val();
+
+                            
+                            
+							
+                            gnz11.getModul('Ajax').then(function( Ajax ){
+                                Joomla.loadOptions({
+                                    GNZ11: {
+                                        Ajax: {
+                                            'csrf.token': Joomla.getOptions('csrf.token'),
+                                        }
+                                    }
+                                });
+                                
+                                var data = {
+                                    option : 'com_virtuemart' ,
+                                    view : 'productdetails' ,
+                                    task : 'recalculate' ,
+                                    format : 'json' ,
+                                    nosef : 1 ,
+                                    quantity: val,
+                                    virtuemart_product_id : [productId]
+                                    
+                                };
+                                Ajax.send(data , 'recalculate' , {method : 'GET'}).then(function (res) {
+                                    $paren.find('.PricesalesPrice .value').text(res.basePriceWithTax);
+                                    console.log(res.basePriceWithTax) ;
+                                },function (err) {
+                                    console.log(err)
+                                });
+                            });
+							
 							return false;
 						});
 					})
@@ -204,7 +238,7 @@ defined('_JEXEC') or die;
 					});
 
 				});
-			}
+			};
 
 			_processGeneral();
 
@@ -280,6 +314,10 @@ defined('_JEXEC') or die;
 						$('.mc-product-wrap', $cart).html($.trim(list.list_html));
 						$('.mc-totalprice ,.mc-totalprice-footer', $cart).html(list.billTotal);
 						$('.mc-totalproduct', $cart).html(list.length);
+						
+						$('.sj-minicart-pro').find('.mc-header small').text(list.textCount);
+						
+						
 						_processGeneral();
 						if (list.length > 0) {
 							$mpEmpty.fadeOut('slow').remove();

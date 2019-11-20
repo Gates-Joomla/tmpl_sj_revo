@@ -25,13 +25,12 @@
         <?= $this->sublayout('item-title' , [ 'item' => $item ] );  ?>
 		
 		<?= $this->sublayout('item-price' , [ 'item' => $item ] );  ?>
-		<?= $this->sublayout('item-addtocart' , [ 'item' => $item ] );  ?>
-  
 		
-        
-		
-  
-	</div>
+        <?= $this->sublayout('item-addtocart' , [
+                'item' => $item ,
+                'itemId' =>$itemId ,
+		] );  ?>
+    </div>
 </div>
 
 

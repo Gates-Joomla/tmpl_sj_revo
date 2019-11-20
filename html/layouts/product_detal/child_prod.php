@@ -1,9 +1,23 @@
 <?php
 	
 	extract( $displayData );
+	
+	$app = JFactory::getApplication();
+	$menu = $app->getMenu();
+	
 	$doc = JFactory::getDocument();
 	$doc->addStyleSheet('/templates/sj_revo/html/layouts/product_detal/child_prod/prod.css');
 	$doc->addScript('/templates/sj_revo/html/layouts/product_detal/child_prod/prod.js');
+	
+	
+	$activeMenu     = $menu->getActive();
+	
+	$itemId = $app->input->get('Itemid', false ,'int');
+	
+	
+	
+	
+	
 	
 	if( !isset($Child) )
 	{
@@ -35,7 +49,11 @@
 
 		foreach( $category as $item )
 		{
-			$itemHtml .=  $this->sublayout('prod' , [ 'product_model'=>$product_model ,'item' => $item , 'i' => $i ] );
+			$itemHtml .=  $this->sublayout('prod' , [
+			        'product_model'=>$product_model ,
+                    'item' => $item , 'i' => $i ,
+			        'itemId' =>$itemId ,
+            ] );
 	    }#END FOREACH
 		
 		$i++;

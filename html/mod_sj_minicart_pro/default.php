@@ -53,10 +53,28 @@ $cls_empty = empty($cart->products) ? ' mc-cart-empty' : '';
 					<?php if ($options->product_label_display == 1) { ?>
 					
 						<?php
+						$titles = array(' %d товар', ' %d товара', ' %d товаров');
+						$number = $check ;
+						$checkText = GNZ11\Document\Text::declOfNum( $number , $titles );
+      
+//						echo'<pre>';print_r( $res );echo'</pre>'.__FILE__.' '.__LINE__;
+       
+       
 							if($check > 1){?>
-								<span class="mc-header hidden-xs"> <?php echo JText::_('THERE_ARE') ?>&nbsp;<small><?php echo $check;?>&nbsp;<?php echo JText::_('ITEMS_CART') ?></small>&nbsp;<?php echo JText::_('IN_YOUR_CART') ?></span>
+								<span class="mc-header hidden-xs">
+                                    <?php echo JText::_('THERE_ARE') ?>&nbsp;
+                                    <small>
+                                        <?php echo $checkText;?>&nbsp;
+<!--                                        --><?php //echo $check;?><!--&nbsp;--><?php //echo JText::_('ITEMS_CART') ?>
+                                    </small>&nbsp;
+                                    <?php echo JText::_('IN_YOUR_CART') ?></span>
 							<?php } else{ ?>
-								<span class="mc-header hidden-xs"> <?php echo JText::_('THERE_ARE') ?>&nbsp;<small><?php echo $check;?>&nbsp;<?php echo JText::_('ITEM_CART') ?></small>&nbsp;<?php echo JText::_('IN_YOUR_CART') ?></span>
+								<span class="mc-header hidden-xs">
+                                    <?php echo JText::_('THERE_ARE') ?>&nbsp;
+                                    <small>
+                                        <?php echo $checkText;?>&nbsp;
+                                        <?php //echo JText::_('ITEM_CART') ?>
+                                    </small>&nbsp;<?php echo JText::_('IN_YOUR_CART') ?></span>
 							<?php } ?>
 					<?php } ?>
 					<span class="mc-update-btn"><?php echo JText::_('BUTTON_UPDATE_LABEL') ?></span>
