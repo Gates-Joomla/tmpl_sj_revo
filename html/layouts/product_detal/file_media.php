@@ -1,8 +1,11 @@
 <?php
 	extract( $displayData );
 	
+ 
+	
 	?>
 
+    
  
 <div class="product-field-display">
  

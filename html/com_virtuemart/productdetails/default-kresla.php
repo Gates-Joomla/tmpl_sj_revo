@@ -17,12 +17,10 @@ if (empty($this->product)) {
 	
 	
 	
+	echo shopFunctionsF::renderVmSubLayout('askrecomjs',array('product'=>$this->product));
+	
 	
 
-
-
-
-echo shopFunctionsF::renderVmSubLayout('askrecomjs',array('product'=>$this->product));
 
 vmJsApi::jDynUpdate();
 vmJsApi::addJScript('updDynamicListeners',"
@@ -103,6 +101,10 @@ if(vRequest::getInt('print',false)){ ?>
 				// Product Edit Link END
 				?>
 				<?php
+					
+				
+     
+     
 				// PDF - Print - Email Icon
 				
 				if (VmConfig::get('show_emailfriend') || VmConfig::get('show_printicon') || VmConfig::get('pdf_icon')) {
@@ -220,13 +222,16 @@ if(vRequest::getInt('print',false)){ ?>
 						<?php
 						}
 						
-							
+						
 							
 							
 					# Расположение слоя
 					# /templates/sj_revo/html/layouts/product_detal/file_media.php
 					echo JLayoutHelper::render('product_detal.file_media', ['product'=>$this->product]);
 					
+					
+					echo JLayoutHelper::render('product_detal.shipping_and_payment', ['product'=>$this->product]);
+	    
 					?>
 			
 					<?php
@@ -411,7 +416,7 @@ if(vRequest::getInt('print',false)){ ?>
 	    # Расположение слоя
 	    # /templates/sj_revo/html/layouts/product_detal/child_prod.php
 	    echo JLayoutHelper::render('product_detal.child_prod', $displayData);
-	    
+    
     
     ?>
     
@@ -440,3 +445,4 @@ if(vRequest::getInt('print',false)){ ?>
     //Virtuemart.containerSelector = '.main';
     //});
 </script>
+

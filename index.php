@@ -10,6 +10,8 @@
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 header('X-UA-Compatible: IE=edge');
+	
+	
 
 
 JLoader::registerNamespace( 'GNZ11' , JPATH_LIBRARIES . '/GNZ11' , $reset = false , $prepend = false , $type = 'psr4' );
@@ -90,6 +92,9 @@ if($yt->getParam('comingsoon_mode')) header("Location: ".$this->baseUrl."?tmpl=c
 
 
 <?php
+	
+	
+	 
     //sub Menu Home page
     $menu = JFactory::getApplication()->getMenu();
     if (is_object( $menu->getActive() ) ) {
